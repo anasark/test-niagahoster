@@ -35,7 +35,7 @@
                     <div class="col-10 align-self-center">
                         <nav class="nav justify-content-end">
                             {% for inf in info %}
-                            <a class="nav-link {{ ( inf.link == 'member' ) ? '' : 'nav-link-mobile' }} {{ inf.class }} px-2" href="{{ inf.link }}"><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
+                            <a class="nav-link {{ ( inf.link == 'member' ) ? '' : 'nav-link-mobile' }} {{ inf.class }} px-2" href="{{ inf.link }} {{ ( inf.onclick ) ? 'onclick=' ~ inf.onclick ~ '' }}"><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
                             {% endfor %}
                             <a href="javascript:void(0)" id="mobile-menu-toggle" class="nav-link"><span class="border border-dark rounded p-1"><i class="material-icons px-1">menu</i></span></a>
                         </nav>
@@ -58,7 +58,7 @@
                     <div class="nav ">
                     {% for inf in info %}
                         {% if inf.link != 'member' %}
-                        <a class="nav-link {{ inf.class }} text-white p-2" href="{{ inf.link }}"><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
+                        <a class="nav-link {{ inf.class }} text-white p-2" href="{{ inf.link }} {{ ( inf.onclick ) ? 'onclick=' ~ inf.onclick ~ '' }}"><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
                         {% endif %}
                     {% endfor %}
                     </div>
