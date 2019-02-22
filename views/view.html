@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="container logo-menu hd">
+                <div class="row">
+                    <div class="col-4"><!-- Let this empty ? --></div>
+                    <div class="col-8">
+                        <nav class="nav justify-content-end">
+                            {% for inf in info %}
+                            <a class="nav-link nunito-regular {{ inf.class }} px-2" href="{{ inf.link }}"
+                            {{ ( inf.onclick ) ? 'onclick=' ~ inf.onclick ~ '' }}
+                            ><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
+                            {% endfor %}
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller_anchor"></div>
+            <div class="mobile container-mobile logo-menu logo-menu-mobile">
+                <div class="row">
+                    <div class="col-2 py-3">
+                        <a href="https://www.niagahoster.co.id/"><img src="assets/svg/niagahoster-logo-mobile.svg" class="logo-mobile" alt="niagahoster"></a>
+                    </div>
+                    <div class="col-10 align-self-center">
+                        <nav class="nav justify-content-end">
+                            {% for inf in info %}
+                            <a class="nav-link {{ ( inf.link == 'member' ) ? '' : 'nav-link-mobile' }} {{ inf.class }} px-2" href="{{ inf.link }}"><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
+                            {% endfor %}
+                            <a href="javascript:void(0)" id="mobile-menu-toggle" class="nav-link"><span class="border border-dark rounded p-1"><i class="material-icons px-1">menu</i></span></a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-0">
+            <div class="container hd">
+                <div class="row py-3">
+                    <div class="col-2">
+                        <a href="https://www.niagahoster.co.id/"><img src="assets/svg/niagahoster-logo.svg" class="logo" alt="niagahoster"></a>
+                    </div>
+                    <div class="col-10 align-self-center">
+                        <nav class="nav justify-content-end header-menu">
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile nav flex-column header-menu nav-top-menu bg-secondary" style="display: none; margin-top: 0px;">
+                    <div class="nav ">
+                    {% for inf in info %}
+                        {% if inf.link != 'member' %}
+                        <a class="nav-link {{ inf.class }} text-white p-2" href="{{ inf.link }}"><i class="material-icons px-1">{{ inf.icon }}</i>{{ inf.text }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+            </div>
+            <hr class="my-0">
+        </header>
+        <div class="trigger-margin-top"></div>
+
+        <div class="container py-5 pb-4">
+            <div class="row banner">
+                <div class="col-12 col-md-6">
+                    <h1 class="montserrat-bold text-white">PHP Hosting</h1>
+                    <p class="montserrat-light">Cepat, handal, penuh dengan modul PHP yang anda butuhkan</p>
+                    <ul class="pt-3 fitur pl-0">
+                        {% for ban in banner %}
+                        <li class="nunito-regular font-size-16">{{ ban }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6">
+                    <img class="banner-img float-right" src="assets/svg/illustration banner PHP hosting-01.svg">
+                </div>
+            </div>
+        </div>
+
+        <div class="share py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-7 align-self-center">
+                        <span>Bagikan jika Anda menyukai halaman ini.</span>
+                    </div>
+                    <div class="col-sm-6 col-md-5 share-button sosmed-share">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-banner">
+            <div class="container py-5">
+                <div class="row align-self-center">
+                    <div class="col-12 col-xl-9 text-center">
+                        <div class="my-3"></div>
+                        <div class="px-2">
+                            <span class="montserrat-light">Perlu <b>BANTUAN?</b> <span class="one">Hubungi Kami: </span></span>
+                            <span class="montserrat-bold one"><a href="" class="telp link-telp"></a> </span>
+                        </div>
+                        <div class="my-3"></div>
+                    </div>
+                    <div class="col-12 col-xl-3 text-center align-self-center">
+                        <div class="my-3"></div>
+                        <div>
+                            <a href="javascript: void(0);" class="support-button" onclick="jivo_api.open();"><i class="material-icons support-icon mr-2">question_answer</i> Live Chat</a>
+                        </div>
+                        <div class="my-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-menu pt-5">
+            <div class="container">
+                <div class="row">
+                    {% for ft in footer %}
+                    <div class="{{ ft.class }} pb-3 {{ (ft.nama == 'info') ? ft.nama }}">
+                        <p class="title roboto-bold">{{ ( ft.nama != 'sosmed' ) ? ft.text }}</p>
+                        {% if ft.nama not in ['info', 'newsletter', 'sosmed', 'pembayaran'] %}
+                        <ul class="nunito-regular text list {{ ft.nama }}"></ul>
+                        {% elseif ft.nama == 'newsletter' %}
+                        <div class="pt-2"></div>
+                        <div class="input-group input">
+                            <input type="text" class="form-control rounded-0" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required="">
+                            <div class="input-submit">
+                                <input type="submit" class="btn btn-primary rounded-0" id="inputGroupPrepend2" value="Berlangganan">
+                            </div>
+                        </div>
+                        <p class="nunito-light nl mt-3">Dapatkan promo dan konten menarik dari penyedia hosting terbaik Anda.</p>
+                        {% elseif ft.nama == 'sosmed' %}
+                        <div class="pt-2"></div>
+                        <div class="row {{ ft.nama }} pt-3"></div>
+                        {% elseif ft.nama == 'pembayaran' %}
+                        <div class="row pembayaran-logo {{ ft.nama }}"></div>
+                        <p class="nunito-light nl pt-3">Aktivasi instan dengan e-Payment. Hosting dan domain langsung aktif!</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <hr>
+                    </div>
+                    <div class="col-md-8 col-sm-12 nunito-light">
+                        Copyright ©2016 Niagahoster | Hosting powered by PHP7,
+                        CloudLinux, CloudFlare, BitNinja and DC Biznet Technovillage Jakarta<br>
+                        Cloud VPS Murah powered by Webuzo Softaculous, Intel SSD and cloud computing technology
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 font-white center-text">
+                        <span class="syarat-dan-ketentuan nunito-light">
+                            Syarat dan Ketentuan | Kebijakan Privasi
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var head_menu = $('.header-menu');
+                var sosmed = $('.sosmed');
+                var sosmed_share = $('.sosmed-share');
+                var pembayaran = $('.pembayaran');
+                $.ajax({
+                    type: 'GET',
+                    url: 'json.php',
+                    data: { get_param: 'value' },
+                    dataType: 'json',
+                    success: function (result) {
+                        $.each(result.menu,function(k, v) {
+                            $('<a>',{ href:k, text:v, class:'nav-link px-2 nunito-regular ' }).appendTo(head_menu);
+                        });
+                        $.each(result.footer,function(key) {
+                            var nama = $('.'+key);
+                            $.each(this, function (k, v) {
+                                $('<li>', {html: $('<a>', {class: 'nunito-regular', href: k, text: v})}).appendTo(nama);
+                            })
+                        })
+                        $.each(result.info,function(k, v) {
+                            var info = $('.info');
+                            if ( $.type(v) == "object" ) {
+                                $('<a>', {class: 'nunito-regular text telp link-telp'}).appendTo(info);
+                            } else {
+                                $('<p>', {class: 'nunito-regular text', html: v.toString().replace(/\n/g, "<br>")}).appendTo(info);
+                            }
+                        })
+                        $.each(result.sosmed,function(k, v) {
+                            $('<div>', {class: 'col text-center', html: $('<a>', {href: k, html: $('<i>', {class: 'zmdi zmdi-'+v+' zmdi-circle '+v})})}).appendTo(sosmed);
+                        })
+                        $.each(result.sosmed,function(k, v) {
+                            $('<div>', {class: 'jssocials-share jssocials-share-'+v, html: $('<a>', {class: 'jssocials-share-link', href: k, html: $('<i>', {class: 'zmdi zmdi-hc-fw zmdi-'+v+' jssocials-share-logo '+v})})}).appendTo(sosmed_share);
+                        })
+                        $.each(result.pembayaran,function(k, v) {
+                            $('<div>', {class: 'col col-xl-1 py-2', html: $('<img>', {class: 'logo-pembayaran', src: 'assets/svg/payment/'+v+'.svg'})}).appendTo(pembayaran);
+                        })
+
+                        $('.telp').append(result.info.telp.text);
+                        $('.link-telp').attr('href', result.info.telp.link);
+                    }
+                });
+
+                var pull = $('#mobile-menu-toggle');
+                var menu = $('.nav-top-menu');
+
+                $(pull).on('click', function(e) {
+                    e.preventDefault();
+                    menu.slideToggle();
+                });
+
+                $(window).scroll(function(e) {
+                    var width = $(this).width();
+                    var scroller_anchor = $(".scroller_anchor").offset().top;
+
+                    if(width >= 320 && width <= 1023) {
+                        if($(this).scrollTop() > scroller_anchor && $('.logo-menu').css('position') != 'fixed') {
+                            $('.logo-menu-mobile').css({'position': 'fixed', 'width': '100%'});
+                            $('.trigger-margin-top').css('margin-top', '50px');
+                            $('header .nav-top-menu').css('margin-top', '55px');
+                        } else if($(this).scrollTop() <= scroller_anchor && $('.logo-menu').css('position') != 'relative') {
+                            $('.trigger-margin-top').css('margin-top', '0');
+                            $('header .nav-top-menu').css('margin-top', '0');
+                            $('.logo-menu-mobile').css({'position': 'relative'});
+                        }
+                    }
+                });
+            });
+        </script>
+
+
+        <!-- BEGIN JIVOSITE CODE {literal} -->
+        <script type='text/javascript'>
+            (function(){ var widget_id = 'PqqZ403Lwa';var d=document;var w=window;function l(){
+                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+                s.src = '//code.jivosite.com/script/widget/'+widget_id
+                ; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}
+                if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}
+                else{w.addEventListener('load',l,false);}}})();
+        </script>
+        <!-- {/literal} END JIVOSITE CODE -->
+    </body>
+</html>
