@@ -16,7 +16,7 @@ $data->menu = array(
 );
 
 $data->info = array(
-    'telp'              => array( 'text' => '0274-5305505', 'link' => 'telp:02745305505' ),
+    'telp'              => array( 'text' => '0274-5305505', 'link' => 'tel:02745305505' ),
     'hari_kerja'        => "Senin - Minggu \n24 Jam Non Stop",
     'alamat'            => "Jl. Selokan Mataram Monjali \nKarangjati MT 1/304 \nSinduadi, Mlati, Sleman \nYogyakarta 55581",
 );
